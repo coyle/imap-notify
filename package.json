@@ -2,7 +2,12 @@
   "name": "imap-notify",
   "version": "0.0.1",
   "description": "Library to notify when a new message arives on the imap server",
-  "keyworkds": ["imap", "notify", "listen", "sync"],
+  "keyworkds": [
+    "imap",
+    "notify",
+    "listen",
+    "sync"
+  ],
   "author": "Dennis Coyle <dcoyle87@gmail.com>",
   "repository": {
     "type": "git",
@@ -19,7 +24,8 @@
     "grunt-mocha-istanbul": "^2.2.0",
     "should": "2.1.1",
     "sinon": "~1.10.3",
-    "mocha": "~1.21.4"
+    "mocha": "~1.21.4",
+    "proxyquire": "~1.4.0"
   },
   "dependencies": {
     "lodash": "~3.3.1",
