@@ -1,6 +1,6 @@
 {
   "name": "imap-notify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library to notify when a new message arives on the imap server",
   "keyworkds": [
     "imap",
