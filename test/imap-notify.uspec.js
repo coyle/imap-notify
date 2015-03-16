@@ -250,19 +250,3 @@ describe('imap-notify', function() {
   });
 
 });
-
-// var
-//   imapNotify = require('../lib/imap-notify'),
-//   opts = {
-//       user: '',
-//       host: 'imap.gmail.com',
-//       password: '',
-//       port: 993,
-//       tls: true,
-//       box: 'Inbox'
-//     };
-
-
-// imapNotify(opts)
-//   .on('error', function(err) {console.log(err);})
-//   .on('mail', function(mail) {console.log(mail);});
