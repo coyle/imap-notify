@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "main": "lib/imap-notify",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.10.0",

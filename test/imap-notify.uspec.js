@@ -110,6 +110,13 @@ describe('imap-notify', function() {
       imapStub.lastCall.calledWith(imapConfigs).should.be.ok;
     });
 
+    it('should set oauth token if no password', function() {
+      opts.password = null;
+      opts.xoauth2 = 'xoauth2';
+      notifier = imapNotify(opts);
+      imapStub.lastCall.calledWith(imapConfigs).should.not.be.ok;
+    });
+
     it('should call connect on imap', function() {
       imapInstanceStub.connect.callCount.should.eql(1);
     });
@@ -150,6 +157,12 @@ describe('imap-notify', function() {
       eventEmitStub.lastCall.calledWith('error', 'msg').should.be.ok;
     });
 
+    it('should emit success event if opening the box succeeds', function() {
+      imapInstanceStub.on.args[1][1]();
+      imapInstanceStub.openBox.lastCall.args[2]();
+      eventEmitStub.lastCall.calledWith('success').should.be.ok;
+    });
+
     it('should emit end when imap ends', function() {
       imapInstanceStub.on.args[3][1]();
       eventEmitStub.lastCall.calledWith('end').should.be.ok;
@@ -157,7 +170,12 @@ describe('imap-notify', function() {
 
     it('should emit an error if imap closed with error', function() {
       imapInstanceStub.on.args[4][1]('msg');
-      eventEmitStub.lastCall.calledWith('error', 'msg').should.be.ok;
+      eventEmitStub.calledWith('error', 'msg').should.be.ok;
+    });
+
+    it('should emit an close event if imap connection closed', function() {
+      imapInstanceStub.on.args[4][1]();
+      eventEmitStub.lastCall.calledWith('close').should.be.ok;
     });
 
     describe('fetchNewMsgs()', function() {
@@ -236,7 +254,7 @@ describe('imap-notify', function() {
 // var
 //   imapNotify = require('../lib/imap-notify'),
 //   opts = {
-//       user: 'dennis.coyle@voxa.com',
+//       user: '',
 //       host: 'imap.gmail.com',
 //       password: '',
 //       port: 993,
@@ -245,4 +263,6 @@ describe('imap-notify', function() {
 //     };
 
 
-// imapNotify(opts).on('error', function(err) {console.log(err);}).on('mail', function(mail) {console.log(mail);});
+// imapNotify(opts)
+//   .on('error', function(err) {console.log(err);})
+//   .on('mail', function(mail) {console.log(mail);});
