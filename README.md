@@ -22,7 +22,7 @@ options = {
   box: 'Inbox'
 };
 
-notifer = notify(options);
+notifier = notify(options);
 
 notifier.on('error', function(err) {
   console.log(err);
